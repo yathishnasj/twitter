@@ -1,1 +1,158 @@
-
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Yathishna SJ | X Clone</title>
+<link rel="stylesheet" href="twitter.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+<div class="x-logo">𝕏</div>
+<nav>
+<a onclick="showPage('home')">🏠 <span>Home</span></a>
+<a onclick="showPage('explore')">🔍 <span>Explore</span></a>
+<a onclick="showPage('notifications')">🔔 <span>Notifications</span></a>
+<a onclick="showPage('messages')">✉️ <span>Messages</span></a>
+<a onclick="showPage('bookmarks')">🔖 <span>Bookmarks</span></a>
+<a onclick="showPage('profile')">👤 <span>Profile</span></a>
+</nav>
+<button class="post-main-btn" onclick="focusPost()">Post</button>
+<div class="sidebar-profile">
+<div class="avatar">Y</div>
+<div>
+<b>Yathishna SJ</b>
+<small>@yathishna</small>
+</div>
+</div>
+</aside>
+<main class="main">
+<section id="home" class="page active-page">
+<header class="top-header">
+<h2>Home</h2>
+<span>✦</span>
+</header>
+<div class="create-post">
+<div class="avatar">Y</div>
+<div class="post-area">
+<textarea id="postText" maxlength="280" placeholder="What is happening?!" oninput="updateCount()"></textarea>
+<div class="post-bottom">
+<div class="post-icons">📷 🎥 😊 📍 <span id="count">0/280</span></div>
+<button onclick="createPost()">Post</button>
+</div>
+</div>
+</div>
+<div id="posts"></div>
+</section>
+<section id="explore" class="page">
+<header class="top-header"><h2>Explore</h2></header>
+<div class="search-box">🔍<input type="text" id="searchInput" placeholder="Search" onkeyup="searchPosts()"></div>
+<div class="explore-card">
+<small>Trending in India</small>
+<h3>#CollegeLife</h3>
+<p>25.5K posts</p>
+</div>
+<div class="explore-card">
+<small>Trending</small>
+<h3>#JavaScript</h3>
+<p>18.2K posts</p>
+</div>
+<div class="explore-card">
+<small>Trending in India</small>
+<h3>#Technology</h3>
+<p>42.8K posts</p>
+</div>
+</section>
+<section id="notifications" class="page">
+<header class="top-header"><h2>Notifications</h2></header>
+<div class="notification">❤️ <b>Nandhitha</b> liked your post. <small>2 min ago</small></div>
+<div class="notification">🔁 <b>Jenifer</b> reposted your post. <small>10 min ago</small></div>
+<div class="notification">👤 <b>Yathishna</b> followed you. <small>1 hour ago</small></div>
+<div class="notification">💬 <b>Harini</b> commented on your post. <small>2 hours ago</small></div>
+<div class="notification">❤️ <b>Sanju</b> liked your post. <small>3 hours ago</small></div>
+</section>
+<section id="messages" class="page">
+<header class="top-header"><h2>Messages</h2></header>
+<div class="message-layout">
+<div class="friends">
+<h3>Friends</h3>
+<div class="friend" onclick="openChat('Nandhitha')"><div class="avatar">N</div><div><b>Nandhitha</b><small>Hey Yathishna! 👋</small></div></div>
+<div class="friend" onclick="openChat('Jenifer')"><div class="avatar">J</div><div><b>Jenifer</b><small>How are you?</small></div></div>
+<div class="friend" onclick="openChat('Nakshatra')"><div class="avatar">N</div><div><b>Nakshatra</b><small>Nice post ❤️</small></div></div>
+<div class="friend" onclick="openChat('Harini')"><div class="avatar">H</div><div><b>Harini</b><small>Tomorrow college?</small></div></div>
+<div class="friend" onclick="openChat('Sanju')"><div class="avatar">S</div><div><b>Sanju</b><small>Good morning 😊</small></div></div>
+<div class="friend" onclick="openChat('Sonu')"><div class="avatar">S</div><div><b>Sonu</b><small>Send notes!</small></div></div>
+<div class="friend" onclick="openChat('Pragathi')"><div class="avatar">P</div><div><b>Pragathi</b><small>See you tomorrow!</small></div></div>
+<div class="friend" onclick="openChat('Srinithi')"><div class="avatar">S</div><div><b>Srinithi</b><small>Nice photo!</small></div></div>
+</div>
+<div class="chat">
+<div id="chatHeader"><h3>Select a friend</h3></div>
+<div id="chatMessages"><p class="chat-placeholder">Select a friend to start chatting.</p></div>
+<div class="chat-input">
+<input type="text" id="messageInput" placeholder="Write a message...">
+<button onclick="sendMessage()">Send</button>
+</div>
+</div>
+</div>
+</section>
+<section id="bookmarks" class="page">
+<header class="top-header"><h2>Bookmarks</h2></header>
+<div id="bookmarkPosts">
+<div class="bookmark-card">🔖 <b>Yathishna VS</b><p>Learning JavaScript is fun! 💻✨</p></div>
+</div>
+</section>
+<section id="profile" class="page">
+<div class="profile-cover"></div>
+<div class="profile-info">
+<div class="big-avatar">Y</div>
+<button class="edit-btn">Edit profile</button>
+<h2>Yathishna VS</h2>
+<p>@yathishna</p>
+<p class="bio">B.Tech IT student 💻 | Music lover 🎧 | Learning & creating 🚀</p>
+<p>📍 Erode, Tamil Nadu</p>
+<div class="profile-stats">
+<span><b>200</b>Following</span>
+<span><b>50</b>Followers</span>
+</div>
+</div>
+<div class="profile-tabs">
+<b>Posts</b><span>Replies</span><span>Media</span><span>Likes</span>
+</div>
+<div id="profilePosts"></div>
+</section>
+</main>
+<aside class="right-sidebar">
+<div class="right-search">🔍<input type="text" placeholder="Search"></div>
+<div class="right-card">
+<h2>What's happening</h2>
+<div class="trend"><small>Trending in India</small><b>#Technology</b><span>42.8K posts</span></div>
+<div class="trend"><small>Trending</small><b>#CollegeLife</b><span>25.5K posts</span></div>
+<div class="trend"><small>Trending</small><b>#JavaScript</b><span>18.2K posts</span></div>
+<a>Show more</a>
+</div>
+<div class="right-card">
+<h2>Who to follow</h2>
+<div class="suggestion">
+<div class="avatar">N</div>
+<div><b>Nandhitha</b><small>@nandhitha</small></div>
+<button>Follow</button>
+</div>
+<div class="suggestion">
+<div class="avatar">J</div>
+<div><b>Jenifer</b><small>@jenifer</small></div>
+<button>Follow</button>
+</div>
+<div class="suggestion">
+<div class="avatar">N</div>
+<div><b>Nakshatra</b><small>@nakshatra</small></div>
+<button>Follow</button>
+</div>
+</div>
+</aside>
+</div>
+<script src="twitter.js"></script>
+</body>
+</html>
+```
